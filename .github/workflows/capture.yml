@@ -1,0 +1,69 @@
+name: Capture product screenshots
+
+on:
+  push:
+    branches: [main]
+    paths: ["requests/**.json"]
+  workflow_dispatch:
+    inputs:
+      file:
+        description: "Request file, e.g. requests/2026-10-10.json"
+        required: true
+
+concurrency:
+  group: capture
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  capture:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
+
+      - name: Find request file
+        id: req
+        run: |
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+            echo "file=${{ inputs.file }}" >> "$GITHUB_OUTPUT"
+          else
+            F=$(git diff --name-only --diff-filter=AM HEAD~1 HEAD -- 'requests/*.json' | head -1)
+            echo "file=$F" >> "$GITHUB_OUTPUT"
+          fi
+
+      - uses: actions/setup-node@v4
+        if: steps.req.outputs.file != ''
+        with:
+          node-version: 20
+
+      - name: Install Playwright + Pillow
+        if: steps.req.outputs.file != ''
+        run: |
+          npm install --no-save playwright@1.48.2
+          npx playwright install --with-deps chromium
+          pip install --quiet pillow
+
+      - name: Capture
+        if: steps.req.outputs.file != ''
+        run: node capture/capture.mjs "${{ steps.req.outputs.file }}"
+
+      - name: Frame
+        if: steps.req.outputs.file != ''
+        run: python3 capture/frame.py "${{ steps.req.outputs.file }}"
+
+      - name: Commit screenshots
+        if: steps.req.outputs.file != ''
+        run: |
+          git config user.name "post-media-bot"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          rm -rf raw
+          git add -A '20*/'
+          if git diff --cached --quiet; then echo "Nothing new"; exit 0; fi
+          git commit -m "shots: ${{ steps.req.outputs.file }}"
+          git pull --rebase origin main
+          git push origin HEAD:main
