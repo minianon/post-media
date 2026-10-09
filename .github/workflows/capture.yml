@@ -62,7 +62,7 @@ jobs:
           git config user.name "post-media-bot"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           rm -rf raw
-          git add -A '20*/'
+          git add -A
           if git diff --cached --quiet; then echo "Nothing new"; exit 0; fi
           git commit -m "shots: ${{ steps.req.outputs.file }}"
           git pull --rebase origin main
