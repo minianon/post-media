@@ -1,0 +1,11 @@
+title: Tushar Bhardwaj
+description: Articles by Tushar Bhardwaj (Mini Anon)
+markdown: kramdown
+kramdown:
+  input: GFM
+  hard_wrap: false
+include: []
+exclude: [capture, requests, fonts, photos, products.json, README.md, node_modules, raw, .github]
+defaults:
+  - scope: { path: "articles" }
+    values: { layout: article }
