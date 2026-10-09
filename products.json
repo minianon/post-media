@@ -1,0 +1,23 @@
+{
+  "note": "Tushar's live projects. Only these domains can be screenshotted. Edit freely: add/remove projects or change the page to capture.",
+  "products": [
+    { "name": "Portfolio", "url": "https://minianon.in", "about": "Personal portfolio" },
+    { "name": "Revert", "url": "https://revert.minianon.in", "about": "Job alerts community for students and freshers" },
+    { "name": "ShortlistMe", "url": "https://shortlistme.site", "about": "AI resume to portfolio website" },
+    { "name": "MiniLink", "url": "https://link.minianon.in", "about": "Link-in-bio platform for developers" },
+    { "name": "Weaave", "url": "https://weaave.minianon.in", "about": "Visual AI workflow builder" },
+    { "name": "HireLens", "url": "https://lens.minianon.in", "about": "AI resume screening and ranking" },
+    { "name": "MiniMock", "url": "https://mock.minianon.in", "about": "Chat, social and AI mockup generator" },
+    { "name": "MiniRizz", "url": "https://rizz.minianon.in", "about": "AI wingman for better replies" },
+    { "name": "AnonBeats", "url": "https://beats.minianon.in", "about": "Ad-free personal music player" },
+    { "name": "Maze Solver", "url": "https://maze.minianon.in", "about": "Maze generator and solver with multiple algorithms" },
+    { "name": "Canvas Editor", "url": "https://canvas.minianon.in", "about": "Minimal 2D canvas editor" },
+    { "name": "AutoPress", "url": "https://press.minianon.in", "about": "AutoPress" },
+    { "name": "LifeOS", "url": "https://lifeos.minianon.in", "about": "LifeOS" },
+    { "name": "AnonVault", "url": "https://vault.minianon.in", "about": "AnonVault" },
+    { "name": "Buildability", "url": "https://buildability.minianon.in", "about": "Buildability" },
+    { "name": "MiniVouch", "url": "https://mini-vouch.vercel.app", "about": "Testimonial wall for developers" },
+    { "name": "Linark", "url": "https://linark.vercel.app", "about": "Linark" },
+    { "name": "ResumeMind", "url": "https://resumemind.vercel.app", "about": "AI resume analyzer" }
+  ]
+}
