@@ -1,6 +1,6 @@
-// Cross-posts articles/<slug>/index.md to Dev.to and Hashnode once their crosspost_at time has passed.
+// Cross-posts articles/<slug>/index.md to Dev.to once their crosspost_at time has passed.
 // Canonical URL always points to the GitHub Pages copy. Results are recorded in articles/<slug>/posted.json.
-// Env: DEVTO_API_KEY, HASHNODE_TOKEN, HASHNODE_PUBLICATION_ID (each platform is skipped if its secret is missing), DRY_RUN=1
+// Env: DEVTO_API_KEY (skipped if missing), DRY_RUN=1. (Hashnode code kept but disabled.)
 import { readFileSync, writeFileSync, readdirSync, existsSync } from "node:fs";
 
 const SITE = "https://minianon.github.io/post-media";
@@ -67,7 +67,6 @@ async function hashnode(a) {
 
 const platforms = [
   ["devto", devto, () => process.env.DEVTO_API_KEY],
-  ["hashnode", hashnode, () => process.env.HASHNODE_TOKEN && process.env.HASHNODE_PUBLICATION_ID],
 ];
 
 let changed = false, failed = 0;

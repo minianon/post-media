@@ -1,4 +1,4 @@
-name: Cross-post articles (Dev.to + Hashnode)
+name: Cross-post articles (Dev.to)
 
 on:
   schedule:
@@ -28,8 +28,6 @@ jobs:
       - name: Cross-post due articles
         env:
           DEVTO_API_KEY: ${{ secrets.DEVTO_API_KEY }}
-          HASHNODE_TOKEN: ${{ secrets.HASHNODE_TOKEN }}
-          HASHNODE_PUBLICATION_ID: ${{ secrets.HASHNODE_PUBLICATION_ID }}
           DRY_RUN: ${{ github.event.inputs.dry_run || '0' }}
         run: node .github/scripts/crosspost.mjs
       - name: Save results
