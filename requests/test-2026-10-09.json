@@ -1,0 +1,6 @@
+{"shots":[
+ {"url":"https://shortlistme.site","out":"2026/10-09/test-shortlistme.png"},
+ {"url":"https://revert.minianon.in","out":"2026/10-09/test-revert.png"},
+ {"url":"https://weaave.minianon.in","out":"2026/10-09/test-weaave.png"},
+ {"url":"https://link.minianon.in","out":"2026/10-09/test-minilink.png","mobile":true}
+]}
