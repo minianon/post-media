@@ -1,11 +1,18 @@
 name: Page check
-on: workflow_dispatch
+on:
+  workflow_dispatch:
+    inputs:
+      url:
+        description: "Page URL to check"
+        default: "https://minianon.github.io/post-media/articles/test-layout/"
 jobs:
   check:
     runs-on: ubuntu-latest
     steps:
       - run: |
-          for u in https://minianon.github.io/post-media/articles/test-layout/ https://minianon.github.io/post-media/; do
-            r=$(curl -s -o /tmp/p -w "%{http_code} %{url_effective}" -L "$u"); t=$(grep -o '<title>[^<]*' /tmp/p | head -1)
-            echo "::notice::$u -> $r $t"
+          u="${{ github.event.inputs.url }}"
+          for i in 1 2 3 4 5 6; do
+            r=$(curl -s -o /tmp/p -w "%{http_code}" -L "$u"); [ "$r" = "200" ] && break; sleep 30
           done
+          t=$(grep -o '<title>[^<]*' /tmp/p | head -1 | sed 's/<title>//'); imgs=$(grep -o '<img ' /tmp/p | wc -l)
+          echo "::notice::$u -> HTTP $r · title: $t · images: $imgs"
