@@ -1,0 +1,11 @@
+name: Page check
+on: workflow_dispatch
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - run: |
+          for u in https://minianon.github.io/post-media/articles/test-layout/ https://minianon.github.io/post-media/; do
+            r=$(curl -s -o /tmp/p -w "%{http_code} %{url_effective}" -L "$u"); t=$(grep -o '<title>[^<]*' /tmp/p | head -1)
+            echo "::notice::$u -> $r $t"
+          done
