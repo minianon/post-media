@@ -4,8 +4,6 @@
 
 [![Capture product screenshots](https://github.com/minianon/post-media/actions/workflows/capture.yml/badge.svg)](https://github.com/minianon/post-media/actions/workflows/capture.yml)
 [![Cross-post articles](https://github.com/minianon/post-media/actions/workflows/crosspost.yml/badge.svg)](https://github.com/minianon/post-media/actions/workflows/crosspost.yml)
-[![Articles site](https://img.shields.io/badge/articles-minianon.github.io%2Fpost--media-0969da)](https://minianon.github.io/post-media/)
-
 ## Why it exists
 
 Scheduling tools like Buffer need every image at a public URL. Instead of uploading files by hand, every post's media is committed here and linked straight from `raw.githubusercontent.com`. The repo doubles as a log of everything that went out, day by day.
