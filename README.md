@@ -90,3 +90,11 @@ GitHub Actions · Playwright · Python + Pillow · Node.js · Jekyll on GitHub P
 Built by **Tushar Bhardwaj** ([Mini Anon](https://minianon.in)). Find me on [GitHub](https://github.com/minianon).
 
 The images, photos and articles here are mine and are shared for my own posts; please don't reuse them without asking.
+
+## Design docs
+
+| Doc | What's inside |
+|---|---|
+| [High-Level Design](docs/hld.md) | Architecture, components, data flow, tech choices, deployment |
+| [Low-Level Design](docs/lld.md) | Modules, data models, APIs and functions, key sequences |
+
